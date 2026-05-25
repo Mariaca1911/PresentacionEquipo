@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatización de Pruebas · Equipo Gomita</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="deck" id="deck">
+  <!-- Los slides se cargan aquí dinámicamente -->
+</div>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+  <button class="nav-btn" id="btnPrev" disabled title="Anterior (←)">&#8592;</button>
+  <div class="nav-dots-row" id="navDots"></div>
+  <span class="nav-counter" id="counter">1 / 8</span>
+  <button class="nav-btn" id="btnNext" title="Siguiente (→)">&#8594;</button>
+</nav>
+
+<script>
+  const SLIDES = [
+    'slide1.html',
+    'slide2.html',
+    'slide3.html',
+    'slide4.html',
+    'slide5.html',
+    'slide6.html',
+    'slide7.html',
+    'slide8.html',
+  ];
+
+  const deck     = document.getElementById('deck');
+  const btnPrev  = document.getElementById('btnPrev');
+  const btnNext  = document.getElementById('btnNext');
+  const counter  = document.getElementById('counter');
+  const dotsRow  = document.getElementById('navDots');
+  const total    = SLIDES.length;
+  let current    = 0;
+
+  // Load all slides into the deck
+  async function loadSlides() {
+    for (const file of SLIDES) {
+      const res  = await fetch(file);
+      const html = await res.text();
+      const tmp  = document.createElement('div');
+      tmp.innerHTML = html.trim();
+      deck.appendChild(tmp.firstElementChild);
+    }
+    init();
+  }
+
+  function init() {
+    const slides = deck.querySelectorAll('.slide');
+
+    // Build nav dots
+    slides.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'ndot' + (i === 0 ? ' active' : '');
+      d.title = `Slide ${i + 1}`;
+      d.addEventListener('click', () => goTo(i));
+      dotsRow.appendChild(d);
+    });
+
+    function goTo(n) {
+      if (n < 0 || n >= total) return;
+      const all = deck.querySelectorAll('.slide');
+      all[current].classList.remove('active');
+      all[current].classList.add('out-left');
+      setTimeout(() => all[current].classList.remove('out-left'), 500);
+
+      current = n;
+      all[current].classList.add('active');
+
+      dotsRow.querySelectorAll('.ndot').forEach((d, i) => d.classList.toggle('active', i === current));
+      counter.textContent = `${current + 1} / ${total}`;
+      btnPrev.disabled = current === 0;
+      btnNext.disabled = current === total - 1;
+    }
+
+    btnPrev.addEventListener('click', () => goTo(current - 1));
+    btnNext.addEventListener('click', () => goTo(current + 1));
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(current + 1);
+      if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   goTo(current - 1);
+    });
+  }
+
+  loadSlides();
+</script>
+
+</body>
+</html>

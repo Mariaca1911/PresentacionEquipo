@@ -1,0 +1,41 @@
+<!-- SLIDE 3 — PATRÓN SCREENPLAY -->
+<div class="slide" id="slide-3">
+  <div class="orb" style="width:600px;height:250px;background:rgba(37,99,235,.07);top:35%;left:-5%;animation-duration:11s"></div>
+  <div class="content">
+    <p class="label">02 · Arquitectura</p>
+    <h2 class="slide-title">Patrón Screenplay</h2>
+    <div class="layers">
+      <div class="layer lA">
+        <div class="layer-n">01</div>
+        <div class="layer-name">Feature</div>
+        <div class="layer-desc">Escenarios en lenguaje natural Gherkin. Define el comportamiento esperado del sistema.</div>
+        <div class="layer-bar"></div>
+      </div>
+      <div class="layer lB">
+        <div class="layer-n">02</div>
+        <div class="layer-name">Step Definition</div>
+        <div class="layer-desc">Conecta cada paso Gherkin con las acciones concretas del actor en el sistema.</div>
+        <div class="layer-bar"></div>
+      </div>
+      <div class="layer lC">
+        <div class="layer-n">03</div>
+        <div class="layer-name">Tasks</div>
+        <div class="layer-desc">Acciones de negocio del actor. BuscarVuelo, DiligenciarFormulario, SeleccionarVuelo.</div>
+        <div class="layer-bar"></div>
+      </div>
+      <div class="layer lD">
+        <div class="layer-n">04</div>
+        <div class="layer-name">Interactions</div>
+        <div class="layer-desc">Operaciones sobre la UI. ClicConDelay implementa el delay de 2s requerido por el taller.</div>
+        <div class="layer-bar"></div>
+      </div>
+      <div class="layer lE">
+        <div class="layer-n">05</div>
+        <div class="layer-name">Questions</div>
+        <div class="layer-desc">Validaciones sobre el sistema. ElMensajeDeConfirmacion, ElPrecioCobrado, ElIdDeTransaccion.</div>
+        <div class="layer-bar"></div>
+      </div>
+    </div>
+    <p class="flow-note">flujo de ejecución ────────────────────────────────────────────────────────────────▶</p>
+  </div>
+</div>

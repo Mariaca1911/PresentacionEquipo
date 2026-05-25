@@ -1,0 +1,63 @@
+<!-- SLIDE 5 — CÓDIGO CLAVE -->
+<div class="slide" id="slide-5">
+  <div class="orb" style="width:350px;height:350px;background:rgba(139,92,246,.07);top:15%;right:3%;animation-duration:9s"></div>
+  <div class="content">
+    <p class="label">04 · Implementación</p>
+    <h2 class="slide-title">Código clave</h2>
+    <div class="code-grid">
+      <div class="code-panel">
+        <div class="code-top">
+          <div class="cdots"><div class="cdot cd-r"></div><div class="cdot cd-y"></div><div class="cdot cd-g"></div></div>
+          <span class="cfn">buscar_y_comprar_vuelo.feature</span>
+        </div>
+        <div class="code-body"><pre><span class="ln">1</span> <span class="kw">Scenario Outline</span><span class="op">:</span> Comprar vuelo
+<span class="ln">2</span>   con diferentes metodos de pago
+<span class="ln">3</span>
+<span class="ln">4</span>   <span class="kw">Given</span> el actor se encuentra en
+<span class="ln">5</span>         la pagina de inicio
+<span class="ln">6</span>   <span class="kw">When</span>  busca un vuelo desde
+<span class="ln">7</span>         <span class="str">"&lt;origen&gt;"</span> hacia <span class="str">"&lt;destino&gt;"</span>
+<span class="ln">8</span>   <span class="kw">And</span>   selecciona el primer vuelo
+<span class="ln">9</span>   <span class="kw">And</span>   diligencia el formulario
+<span class="ln">10</span>        con tarjeta <span class="str">"&lt;tipoTarjeta&gt;"</span>
+<span class="ln">11</span>  <span class="kw">Then</span>  deberia mostrar confirmacion
+<span class="ln">12</span>
+<span class="ln">13</span>  <span class="op">Examples:</span>
+<span class="ln">14</span>  <span class="cm">| tipoTarjeta | numeroTarjeta    |</span>
+<span class="ln">15</span>  <span class="fn">| visa        | 4111111111111111 |</span>
+<span class="ln">16</span>  <span class="fn">| amex        | 378282246310005  |</span>
+<span class="ln">17</span>  <span class="fn">| dinersclub  | 30569309025904   |</span></pre>
+        </div>
+      </div>
+      <div class="code-panel">
+        <div class="code-top">
+          <div class="cdots"><div class="cdot cd-r"></div><div class="cdot cd-y"></div><div class="cdot cd-g"></div></div>
+          <span class="cfn">DiligenciarFormulario.java</span>
+        </div>
+        <div class="code-body"><pre><span class="ln">1</span> <span class="kw">public class</span> <span class="fn">DiligenciarFormulario</span>
+<span class="ln">2</span>              <span class="kw">implements</span> <span class="ty">Task</span> <span class="op">{</span>
+<span class="ln">3</span>
+<span class="ln">4</span>   <span class="cm">// Parametrizable: visa/amex/dinersclub</span>
+<span class="ln">5</span>   <span class="kw">private final</span> <span class="ty">String</span> tipoTarjeta<span class="op">;</span>
+<span class="ln">6</span>   <span class="kw">private final</span> <span class="ty">String</span> numeroTarjeta<span class="op">;</span>
+<span class="ln">7</span>
+<span class="ln">8</span>   <span class="op">@Step</span><span class="cm">("{0} diligencia formulario")</span>
+<span class="ln">9</span>   <span class="kw">public void</span> <span class="fn">performAs</span><span class="op">(T actor) {</span>
+<span class="ln">10</span>    actor<span class="op">.</span><span class="fn">attemptsTo</span><span class="op">(</span>
+<span class="ln">11</span>      <span class="fn">SelectFromOptions</span>
+<span class="ln">12</span>        <span class="op">.</span><span class="fn">byValue</span><span class="op">(</span>tipoTarjeta<span class="op">)...,</span>
+<span class="ln">13</span>      <span class="fn">Enter</span><span class="op">.</span><span class="fn">theValue</span><span class="op">(</span>numeroTarjeta<span class="op">)...</span>
+<span class="ln">14</span>    <span class="op">);</span>
+<span class="ln">15</span>   <span class="op">}</span>
+<span class="ln">16</span>
+<span class="ln">17</span>   <span class="cm">// Compatibilidad con escenario original</span>
+<span class="ln">18</span>   <span class="kw">public static</span> <span class="fn">DiligenciarFormulario</span>
+<span class="ln">19</span>   <span class="fn">conDatosBase</span><span class="op">() {</span>
+<span class="ln">20</span>     <span class="kw">return</span> <span class="fn">instrumented</span><span class="op">(</span><span class="str">"visa"</span><span class="op">,...);</span>
+<span class="ln">21</span>   <span class="op">}</span>
+<span class="ln">22</span> <span class="op">}</span></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
