@@ -1,0 +1,90 @@
+<!-- SLIDE — FLUJO DE EJECUCIÓN -->
+<div class="slide" id="slide-6b">
+  <div class="orb" style="width:500px;height:500px;background:rgba(139,92,246,.07);top:-100px;right:-50px;animation-duration:10s"></div>
+  <div class="content">
+    <p class="label">04.5 · Arquitectura</p>
+    <h2 class="slide-title" style="font-size:2rem;margin-bottom:1rem;">Flujo de ejecución</h2>
+
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;position:relative;z-index:1;font-family:var(--mono);">
+
+      <!-- FILA 1 -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
+        <div style="background:rgba(83,74,183,.2);border:1px solid rgba(83,74,183,.6);border-radius:8px;padding:10px 18px;text-align:center;min-width:140px;">
+          <div style="font-size:.8rem;font-weight:700;color:#c4b5fd;margin-bottom:3px;">.feature</div>
+          <div style="font-size:.65rem;color:#a78bfa;">Escenario Gherkin</div>
+        </div>
+        <span style="color:rgba(255,255,255,.25);font-size:1.2rem;">→</span>
+        <span style="font-size:.6rem;color:#475569;">Cucumber</span>
+        <span style="color:rgba(255,255,255,.25);font-size:1.2rem;">→</span>
+        <div style="background:rgba(30,41,59,.8);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:10px 18px;text-align:center;min-width:140px;">
+          <div style="font-size:.8rem;font-weight:700;color:#e2e8f0;margin-bottom:3px;">Runner.java</div>
+          <div style="font-size:.65rem;color:#475569;">Orquesta las pruebas</div>
+        </div>
+        <span style="color:rgba(255,255,255,.25);font-size:1.2rem;">→</span>
+        <span style="font-size:.6rem;color:#475569;">Given/When/Then</span>
+        <span style="color:rgba(255,255,255,.25);font-size:1.2rem;">→</span>
+        <div style="background:rgba(24,95,165,.2);border:1px solid rgba(37,99,235,.5);border-radius:8px;padding:10px 18px;text-align:center;min-width:140px;">
+          <div style="font-size:.8rem;font-weight:700;color:#93c5fd;margin-bottom:3px;">StepDefinition</div>
+          <div style="font-size:.65rem;color:#60a5fa;">Gherkin → Actor</div>
+        </div>
+      </div>
+
+      <!-- FLECHA DOWN -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+        <span style="color:rgba(255,255,255,.25);font-size:1.2rem;">↓</span>
+        <span style="font-size:.6rem;color:#475569;">Actor.attemptsTo()</span>
+      </div>
+
+      <!-- FILA 2: Tasks -->
+      <div style="background:rgba(15,110,86,.2);border:1px solid rgba(6,182,212,.5);border-radius:8px;padding:10px 24px;text-align:center;">
+        <div style="font-size:.8rem;font-weight:700;color:#67e8f9;margin-bottom:3px;">Tasks</div>
+        <div style="font-size:.65rem;color:#22d3ee;">BuscarVuelo · DiligenciarFormulario · SeleccionarVuelo</div>
+      </div>
+
+      <!-- FILA 3: bifurcación -->
+      <div style="display:flex;gap:60px;align-items:flex-start;justify-content:center;">
+
+        <!-- Rama izquierda: Interactions → Chrome -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <span style="color:rgba(255,255,255,.25);font-size:1.2rem;">↓</span>
+            <span style="font-size:.6rem;color:#475569;">UI actions</span>
+          </div>
+          <div style="background:rgba(15,110,86,.2);border:1px solid rgba(6,182,212,.4);border-radius:8px;padding:10px 18px;text-align:center;min-width:140px;">
+            <div style="font-size:.8rem;font-weight:700;color:#67e8f9;margin-bottom:3px;">Interactions</div>
+            <div style="font-size:.65rem;color:#22d3ee;">ClicConDelay (2s)</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <span style="color:rgba(255,255,255,.25);font-size:1.2rem;">↓</span>
+            <span style="font-size:.6rem;color:#475569;">WebDriver</span>
+          </div>
+          <div style="background:rgba(30,41,59,.8);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px 18px;text-align:center;min-width:140px;">
+            <div style="font-size:.8rem;font-weight:700;color:#e2e8f0;margin-bottom:3px;">Chrome</div>
+            <div style="font-size:.65rem;color:#475569;">blazedemo.com</div>
+          </div>
+        </div>
+
+        <!-- Rama derecha: Questions → Serenity -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <span style="color:rgba(255,255,255,.25);font-size:1.2rem;">↓</span>
+            <span style="font-size:.6rem;color:#475569;">seeThat()</span>
+          </div>
+          <div style="background:rgba(133,79,11,.2);border:1px solid rgba(245,158,11,.5);border-radius:8px;padding:10px 18px;text-align:center;min-width:140px;">
+            <div style="font-size:.8rem;font-weight:700;color:#fcd34d;margin-bottom:3px;">Questions</div>
+            <div style="font-size:.65rem;color:#fbbf24;">ElMensaje · ElPrecio · ElId</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+            <span style="color:rgba(255,255,255,.25);font-size:1.2rem;">↓</span>
+            <span style="font-size:.6rem;color:#475569;">genera</span>
+          </div>
+          <div style="background:rgba(59,109,17,.2);border:1px solid rgba(16,185,129,.5);border-radius:8px;padding:10px 18px;text-align:center;min-width:140px;">
+            <div style="font-size:.8rem;font-weight:700;color:#86efac;margin-bottom:3px;">Serenity Report</div>
+            <div style="font-size:.65rem;color:#4ade80;">HTML · resultados</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
