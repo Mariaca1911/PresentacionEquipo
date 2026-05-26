@@ -1,32 +1,75 @@
-<!-- SLIDE 6 — RESULTADOS -->
+<!-- SLIDE 6 — REPORTE SERENITY: COMPARATIVA -->
 <div class="slide" id="slide-6">
   <div class="orb" style="width:500px;height:500px;background:rgba(16,185,129,.06);top:-100px;right:-100px;animation-duration:10s"></div>
   <div class="orb" style="width:300px;height:300px;background:rgba(37,99,235,.08);bottom:-50px;left:25%;animation-duration:8s"></div>
   <div class="content">
     <p class="label">05 · Resultados</p>
-    <h2 class="slide-title">Reporte SerenityBDD</h2>
-    <div class="results-grid">
-      <div class="res-card rc1">
-        <div class="res-num">9</div>
-        <div class="res-lbl">Tests ejecutados</div>
+    <h2 class="slide-title" style="margin-bottom:1rem;font-size:2rem;">Reporte SerenityBDD</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;flex:1;min-height:0;overflow:hidden;">
+
+      <!-- COLUMNA IZQUIERDA: DINÁMICO -->
+      <div style="display:flex;flex-direction:column;gap:.7rem;min-height:0;">
+        <div style="display:flex;align-items:center;gap:.7rem;">
+          <div style="width:10px;height:10px;border-radius:50%;background:#ef4444;flex-shrink:0;"></div>
+          <span style="font-family:var(--mono);font-size:.65rem;color:#ef4444;letter-spacing:.1em;text-transform:uppercase;">Validación dinámica — precio variable</span>
+        </div>
+        <div style="border:1px solid rgba(239,68,68,.25);background:rgba(239,68,68,.04);padding:.5rem;display:flex;flex-direction:column;gap:.5rem;">
+          <img src="img/din_overview.png" style="width:100%;max-height:160px;object-fit:contain;background:#f5f5f0;border:1px solid rgba(255,255,255,.06);">
+          <img src="img/din_tests.png" style="width:100%;max-height:160px;object-fit:contain;background:#f5f5f0;border:1px solid rgba(255,255,255,.06);">
+        </div>
+        <div style="display:flex;gap:1.2rem;justify-content:center;padding:.5rem 0;border-top:1px solid rgba(255,255,255,.06);flex-shrink:0;">
+          <div style="text-align:center;">
+            <div style="font-size:1.8rem;font-weight:800;color:#ef4444;line-height:1;">20%</div>
+            <div style="font-family:var(--mono);font-size:.5rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:.2rem;">Pass rate</div>
+          </div>
+          <div style="width:1px;background:rgba(255,255,255,.08);"></div>
+          <div style="text-align:center;">
+            <div style="font-size:1.8rem;font-weight:800;color:#ef4444;line-height:1;">8</div>
+            <div style="font-family:var(--mono);font-size:.5rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:.2rem;">Fallos</div>
+          </div>
+          <div style="width:1px;background:rgba(255,255,255,.08);"></div>
+          <div style="text-align:center;">
+            <div style="font-size:.85rem;font-weight:700;color:var(--muted);line-height:1;font-family:var(--mono);margin-top:.3rem;">precioFormulario<br>+ " USD"</div>
+            <div style="font-family:var(--mono);font-size:.5rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:.4rem;">Validación</div>
+          </div>
+        </div>
       </div>
-      <div class="res-card rc2">
-        <div class="res-num">0</div>
-        <div class="res-lbl">Fallos</div>
+
+      <!-- COLUMNA DERECHA: QUEMADO -->
+      <div style="display:flex;flex-direction:column;gap:.7rem;min-height:0;">
+        <div style="display:flex;align-items:center;gap:.7rem;">
+          <div style="width:10px;height:10px;border-radius:50%;background:var(--green);flex-shrink:0;"></div>
+          <span style="font-family:var(--mono);font-size:.65rem;color:var(--green);letter-spacing:.1em;text-transform:uppercase;">Validación quemada — 555 USD fijo</span>
+        </div>
+        <div style="border:1px solid rgba(16,185,129,.25);background:rgba(16,185,129,.04);padding:.5rem;display:flex;flex-direction:column;gap:.5rem;">
+          <img src="img/que_overview.png" style="width:100%;max-height:160px;object-fit:contain;background:#f5f5f0;border:1px solid rgba(255,255,255,.06);">
+          <img src="img/que_tests.png" style="width:100%;max-height:160px;object-fit:contain;background:#f5f5f0;border:1px solid rgba(255,255,255,.06);">
+        </div>
+        <div style="display:flex;gap:1.2rem;justify-content:center;padding:.5rem 0;border-top:1px solid rgba(255,255,255,.06);flex-shrink:0;">
+          <div style="text-align:center;">
+            <div style="font-size:1.8rem;font-weight:800;color:var(--green);line-height:1;">100%</div>
+            <div style="font-family:var(--mono);font-size:.5rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:.2rem;">Pass rate</div>
+          </div>
+          <div style="width:1px;background:rgba(255,255,255,.08);"></div>
+          <div style="text-align:center;">
+            <div style="font-size:1.8rem;font-weight:800;color:var(--green);line-height:1;">0</div>
+            <div style="font-family:var(--mono);font-size:.5rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:.2rem;">Fallos</div>
+          </div>
+          <div style="width:1px;background:rgba(255,255,255,.08);"></div>
+          <div style="text-align:center;">
+            <div style="font-size:.85rem;font-weight:700;color:var(--cyan);line-height:1;font-family:var(--mono);margin-top:.3rem;">"555 USD"</div>
+            <div style="font-family:var(--mono);font-size:.5rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:.4rem;">Validación</div>
+          </div>
+        </div>
       </div>
-      <div class="res-card rc3">
-        <div class="res-num">100%</div>
-        <div class="res-lbl">Exitosos</div>
-      </div>
+
     </div>
-    <div class="tools-wrap">
-      <span class="tool">Serenity BDD 4.1</span>
-      <span class="tool">Cucumber</span>
-      <span class="tool">Selenium WebDriver</span>
-      <span class="tool">ChromeDriver (auto)</span>
-      <span class="tool">Gradle 8.14.3</span>
-      <span class="tool">Java 17</span>
+
+    <!-- Nota hallazgo -->
+    <div style="margin-top:.7rem;padding:.5rem 1rem;border-left:2px solid var(--amber);background:rgba(245,158,11,.06);flex-shrink:0;">
+      <span style="font-family:var(--mono);font-size:.6rem;color:var(--amber);">⚠ Hallazgo de calidad:</span>
+      <span style="font-size:.72rem;color:var(--muted);margin-left:.5rem;">BlazeDemo siempre cobra <strong style="color:var(--white);">555 USD</strong> sin importar la ruta. El precio capturado del formulario incluye el símbolo <strong style="color:var(--white);">$</strong>, rompiendo la comparación dinámica.</span>
     </div>
-    <p class="dur">Duración total: <span>~1m 16s</span></p>
   </div>
 </div>
